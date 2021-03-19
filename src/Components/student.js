@@ -18,7 +18,7 @@ export default class home extends Component {
 
   //Function to get the Customer Data from json
   getCollegeData() {
-    axios.get('http://localhost:4000/student/'+this.props.match.params.id)
+    axios.get('https://college-oneshot.herokuapp.com/student/'+this.props.match.params.id)
     .then(response => {
         console.log(response)
       this.setState({

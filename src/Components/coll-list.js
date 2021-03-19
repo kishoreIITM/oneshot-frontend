@@ -1,6 +1,6 @@
 import Axios from 'axios';
 import React, { Component } from 'react';
-import { Link ,Redirect} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Nav from './nav';
 
 export default class list extends Component {
@@ -12,7 +12,7 @@ export default class list extends Component {
         this.filter = this.filter.bind(this);
     }
 componentDidMount(){
-    Axios.get("http://localhost:4000/")
+    Axios.get("https://college-oneshot.herokuapp.com/")
         .then(res=>{
             this.setState({
                 colleges:res.data

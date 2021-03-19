@@ -19,8 +19,9 @@ export default class country extends Component {
         this.filter = this.filter.bind(this);
     }
 componentDidMount(){
-    Axios.get("http://localhost:4000/")
+    Axios.get("https://college-oneshot.herokuapp.com/")
         .then(res=>{
+            console.log(res)
             this.setState({
                 colleges:res.data
             })

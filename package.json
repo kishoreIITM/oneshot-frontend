@@ -2,11 +2,9 @@
   "name": "simple-reactjs-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://aditya-sridhar.github.io/simple-reactjs-app",
   "dependencies": {
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
-    "canvasjs-react-charts": "^1.0.5",
     "chart.js": "^2.9.4",
     "react": "^16.4.1",
     "react-bootstrap": "^0.32.1",
