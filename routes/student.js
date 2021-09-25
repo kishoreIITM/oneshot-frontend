@@ -4,13 +4,15 @@ const colleges = require('../models/college');
 const students = require('../models/students');
 
 
-router.route('/:id')
+router.route('/:college/:id')
 .get((req,res,next)=>{
-  students.findOne({id:req.params.id})
-    .then(students=>{
-        res.json({students:students})
-    })
-
+  colleges.findOne({id:req.params.college})
+        .then(college=>{
+          students.findOne({id:req.params.id,college:college.name})
+        .then(student=>{
+          res.json({students:student,collegeid:college.id})
+        })
+        })
 })
 
 module.exports = router;
