@@ -19,7 +19,7 @@ class App extends Component {
                 <Route exact path= "/" component={main} />
                 <Route path = "/college/:id" component={college} />
                 <Route path="/student/:id" component={student} />
-                <Route path="/state/" component={state} />
+                <Route exact path="/state" component={state} />
                 <Route path="/state/:state" component={colllist} />
           </Switch>
           <Footer></Footer>
