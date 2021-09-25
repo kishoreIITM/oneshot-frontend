@@ -1,29 +1,29 @@
 html,body {
   height: 100%;
   margin: 0;
+  padding-top: 4rem;
   font-family: sans-serif;
-  background :url('./img/IrM.gif');
+  /* background :url('./img/IrM.gif');
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: cover;
+  background-size: cover; */
 }
 #root,.App{
   height:100%
 }
 nav{
-  background: rgba(45, 68, 90,0.7);
+  background: rgb(1, 20, 37);
 }
 .nav-item{
   font-size: 20px;
   margin: 2px;
 }
-.row{
-  height: 100%;
-}
-.container{
-  height:100%
-}
+
+
 .do{
-  height: 60%;
+  height: 27rem;
   overflow: hidden;
+}
+footer{
+  background-color: blue;
 }

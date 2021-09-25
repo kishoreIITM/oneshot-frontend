@@ -8,7 +8,7 @@ import country from './Components/country';
 import state from './Components/state';
 import colllist from './Components/coll-list';
 import Nav from './Components/nav';
-
+import Footer from './Components/footer' 
 class App extends Component {
   render() {
     return (
@@ -19,10 +19,10 @@ class App extends Component {
                 <Route exact path= "/" component={main} />
                 <Route path = "/college/:id" component={college} />
                 <Route path="/student/:id" component={student} />
-                <Route exact path="/country" component={country} />
-                <Route path="/country/:country" component={state} />
+                <Route path="/state/" component={state} />
                 <Route path="/state/:state" component={colllist} />
           </Switch>
+          <Footer></Footer>
       </div>
     </Router>
     );

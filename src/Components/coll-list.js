@@ -31,7 +31,7 @@ filter(data){
             return(
                 <div>
                     {college.name} - {college.students}
-                    <Link to={'/college/'+college.name}>View More</Link>
+                    <Link to={'/college/'+college.id}>View More</Link>
                 </div>
             )
         }
@@ -41,7 +41,7 @@ filter(data){
 render() {
     var j = this.filter(this.state.colleges)
         return (
-            <div>
+            <div className="container">
                 <Nav />
 
                 {j}

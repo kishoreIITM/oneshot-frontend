@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Nav from './nav';
 import {Doughnut} from 'react-chartjs-2';
-
+import colors from '../colors';
 
 
 export default class country extends Component {
@@ -64,15 +64,8 @@ render() {
         labels: datas[0],
         datasets: [{
           data: datas[1],
-          backgroundColor: [
-          '#36A2EB',
-          '#FFCE56'
-          ],
-          hoverBackgroundColor: [
-          '#FF6384',
-          '#36A2EB',
-          '#FFCE56'
-          ]
+          backgroundColor: colors,
+         
         }],
         hoverOffset: 4
       };
@@ -89,17 +82,19 @@ render() {
         return (
             
             <div className="container">
-                <div className="row">
+                <div className="row" style={{height:"60%"}}>
                     <div className="do col-10 m-auto">
                     <Doughnut  options={{
                         maintainAspectRatio:false,
                         responsive:true,
-                    onClick :function(event,item){
-                        window.location.href="/country/"+datas[0][item[0]._index]
+                        onClick :function(event,item){
+                            if (item[0] !=undefined){
+                                window.location.href="/country/"+datas[0][item[0]._index]
+                            }  
                     },
                     animation:{
                         animateRotate:true,
-                        animateScale:false,
+                        animateScale:true,
                         tension:{
                             duration:1000
                         }
@@ -111,8 +106,7 @@ render() {
                         fontSize:20
                     },
                     legend:{
-                        display:false,
-                        
+                        display:true,   
                     }
                 }} data={data}/>
 

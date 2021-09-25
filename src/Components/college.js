@@ -8,6 +8,7 @@ export default class college extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      id: this.props.match.params.id,
       college: {
               },
       students:[],
@@ -19,38 +20,33 @@ export default class college extends Component {
   componentDidMount() {
     this.getCollegeData();
   }
+  componentDidUpdate(){
+    if (this.state.name != this.props.match.params.id){
+      this.getCollegeData();
+    }
+  }
+
 
   //Function to get the Customer Data from json
   getCollegeData() {
+    console.log("hi")
     axios.get('https://college-oneshot.herokuapp.com/college/'+this.props.match.params.id)
     .then(response => {
-      console.log(response.data.simcollege)
-      this.setState({college: response.data.college,
+      this.setState({
+      id: response.data.college.id,
+      college: response.data.college,
       students:response.data.students,
       simcollege:response.data.simcollege
     });
     });
-    
   };
-componentDidUpdate(){
-  axios.get('https://college-oneshot.herokuapp.com/college/'+this.props.match.params.id)
-    .then(response => {
-      console.log(response.data.simcollege)
-      this.setState({college: response.data.college,
-      students:response.data.students,
-      simcollege:response.data.simcollege
-    });
-    });
-    
-}
+
 
   render() {
-    console.log("render")
     if(!this.state.college.id)
     {
-      return(<div>
-        <Nav/>
-        Details Loading
+      return(<div className='container'>
+          Details Loading
       </div>)
     }
     var students = this.state.students.map((student)=>{
@@ -65,28 +61,33 @@ componentDidUpdate(){
     var simcollege = this.state.simcollege.map((college)=>{
       return(
         <div>
-          <p>{college.name}.....<Link to={"/college/"+college.name}>Know more</Link></p>
+          <p>{college.name}.....<Link to={"/college/"+college.id}>Know more</Link></p>
         </div>
       )
     })
-    return (<div className="addmargin">
+    return (<div className="container">
+      <div className="row">
       <div className="col-md-6">
-      <div>
-          <h4 key={this.state.college.id}>Name: {this.state.college.name}</h4>
-          <h4>ID: {this.state.college.id}</h4>
-          <h4>Year Founded: {this.state.college.founded}</h4>
-          <h4>City: {this.state.college.city}</h4>
-          <h4>State: {this.state.college.state}</h4>
-          <h4>Country: {this.state.college.county}</h4>
-          <h4>No.Of Students: {this.state.college.students}</h4>
+          <div>
+              <h4 key={this.state.college.id}>Name: {this.state.college.name}</h4>
+              <h4>ID: {this.state.college.id}</h4>
+              <h4>Year Founded: {this.state.college.founded}</h4>
+              <h4>City: {this.state.college.city}</h4>
+              <h4>State: {this.state.college.state}</h4>
+              <h4>Country: {this.state.college.county}</h4>
+              <h4>No.Of Students: {this.state.college.students}</h4>
+            </div>
+          <h1>
+            Students studying there
+          </h1>
+          {students} 
         </div>
-        <h1>
-          Students studying there
-        </h1>
-        {students}
+        <div className="col-md-6">
         <h1>Similar College</h1>
-        {simcollege}
+          {simcollege}
+        </div>
       </div>
+        
     </div>)
   }
 

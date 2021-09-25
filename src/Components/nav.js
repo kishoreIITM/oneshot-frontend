@@ -1,4 +1,5 @@
 import React,{Component} from 'react';
+import { Link, animateScroll as scroll } from 'react-scroll';
 import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 
@@ -20,8 +21,8 @@ export default class navbar extends Component {
 
     render(){
     return (
-        <div class="main">
-             <Navbar light expand="md" className="fixed-top">
+        <div className="main">
+             <Navbar dark expand="md" className="fixed-top">
                     <div className="container-fluid">
                         <NavbarToggler onClick={this.toggleNav} />
                         <NavbarBrand href="/"><h2 className="nav-head">Qkres</h2></NavbarBrand>
@@ -31,14 +32,24 @@ export default class navbar extends Component {
                                 <a className="nav-link" href='/'> Home</a>
                             </NavItem>
                             <NavItem>
-                                <NavLink className="nav-link" to='/country'>Dashboard</NavLink>
+                                <a className="nav-link" href='/state'>Dashboard</a>
                             </NavItem>
                             <NavItem>
                                 <NavLink className="nav-link"  to='#'> Search</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink className="nav-link" to='#'> Contact Me</NavLink>
+
+                                <Link
+                                    activeClass="active"
+                                    to="footer"
+                                    spy={true}
+                                    smooth={true}
+                                    offset={-70}
+                                    duration={500}
+                                ><a className="nav-link" href="#">Contact Me</a></Link>
+
                             </NavItem>
+                            
                             </Nav>
                         </Collapse>
                     </div>

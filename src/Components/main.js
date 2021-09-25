@@ -15,7 +15,7 @@ export default class home extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     componentDidMount(){
-        Axios.get("http://localhost:4000/")
+        Axios.get("https://college-oneshot.herokuapp.com/")
         .then(res=>{
             this.setState({
                 colleges:res.data
