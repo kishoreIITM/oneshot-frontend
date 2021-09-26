@@ -4,22 +4,39 @@ import {Doughnut} from 'react-chartjs-2';
 import colors from '../colors';
 import { WhisperSpinner } from "react-spinners-kit";
 import college from '../img/college.jpg';
-import Fade from 'react-reveal/Fade'
-import LandPage from '../Components/landpage.js'
+import Fade from 'react-reveal/Fade';
+
+import landing from '../img/bg.jpg';
+import Zoom from 'react-reveal/Zoom';
+
 export default class home extends Component {
     constructor(props) {
         super(props);
         this.state = {
              value: '',
              colleges :[],
-             loading:true
+             loading:true,
+             imgloading:true
          };
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.filter = this.filterstate.bind(this);
         this.filter = this.filtercourse.bind(this);
+        this.imgonload = this.imgonload.bind(this);
     }
+
+imgonload(){
+    if (this.state.imgloading==true){
+        console.log("loaded")
+        this.setState({
+            imgloading:false
+        })
+        console.log(this.state)
+    }
+        
+    }
+
 componentDidMount(){
     Axios.get("https://college-oneshot.herokuapp.com/")
         .then(res=>{
@@ -27,7 +44,8 @@ componentDidMount(){
                 colleges:res.data,
                 loading:false
             })
-        })   
+        }) 
+ 
 }
 
 handleChange(event) {
@@ -82,7 +100,7 @@ filtercourse(data){
 }
 
 render() {
-    if(this.state.loading){
+    if(this.state.loading || this.state.imgloading ){
         return(
             <div className="loader">
                 <div>
@@ -92,12 +110,14 @@ render() {
             />
             <br/>
             <h2 style={{color:"white"}}>Just a moment, the data is getting loaded</h2>
+            <div style={{display:'none'}}><img src={landing} onLoad={this.imgonload()}  ></img></div>
                 </div>
                 
                 </div>
         
         )
     }
+
     var statedatas = this.filterstate(this.state.colleges);
     var coursedatas = this.filtercourse(this.state.colleges);
     const statedata = {
@@ -121,7 +141,30 @@ render() {
         return (
 
             <div className="container-fluid">
-                <LandPage/>
+                <div className="land">
+            <div className="row">
+                
+                    <div className="col-md-6 land-left">
+                    <Zoom >
+                        <img src={landing} className="img" ></img>
+                        </Zoom>
+                    </div>
+                
+                
+            <div className="col-md-6 land-right ">
+                <div>
+                <h1 className="lnd-txt">An Investment in Knowledge pays the best interest</h1>
+                <br/>
+                <div style={{textAlign:"center",fontSize:"2vh",color:"white",opacity:"0.5"}}>
+                    Scroll down to view the statistics on collegs of India
+                    <br/>
+                    <i style={{color:"rgb(141, 165, 189)",fontSize:"3vh"}} class="fa fa-angle-double-down"></i></div>
+                </div>
+                
+            </div>
+            </div>
+            
+        </div>
                 <div id="dashboard" className="row" style={{marginTop:"7rem"}}>
                     <Fade up>
                     <div className="do col-md-6 m-auto">
