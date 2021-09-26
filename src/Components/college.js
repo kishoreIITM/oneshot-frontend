@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import axios from 'axios'
-import {Link} from 'react-router-dom';
+import axios from 'axios';
+import ReactDOM from 'react-dom';
+import {Link } from 'react-router-dom';
 import Nav from './nav';
 
 export default class college extends Component {
@@ -21,15 +22,14 @@ export default class college extends Component {
     this.getCollegeData();
   }
   componentDidUpdate(){
-    if (this.state.name != this.props.match.params.id){
+    if (this.state.id != this.props.match.params.id){
       this.getCollegeData();
     }
   }
 
 
-  //Function to get the Customer Data from json
+  
   getCollegeData() {
-    console.log("hi")
     axios.get('https://college-oneshot.herokuapp.com/college/'+this.props.match.params.id)
     .then(response => {
       this.setState({
@@ -43,7 +43,7 @@ export default class college extends Component {
 
 
   render() {
-    if(!this.state.college.id)
+    if(this.state.id != this.props.match.params.id)
     {
       return(<div className='container'>
           Details Loading
@@ -57,7 +57,7 @@ export default class college extends Component {
       </div>
       )
     })
-    console.log(students)
+
     var simcollege = this.state.simcollege.map((college)=>{
       return(
         <div>

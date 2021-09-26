@@ -25,9 +25,7 @@ componentDidMount(){
 
 filter(data){
     var j =  data.map((college)=>{
-        console.log(this.props.match.params.state)
         if (college.state == this.props.match.params.state){
-            console.log(college.state)
             return(
                 <div>
                     {college.name} - {college.students}

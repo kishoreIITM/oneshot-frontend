@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import { Link, animateScroll as scroll } from 'react-scroll';
+import { Link } from 'react-scroll';
 import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 
@@ -25,28 +25,20 @@ export default class navbar extends Component {
              <Navbar dark expand="md" className="fixed-top">
                     <div className="container-fluid">
                         <NavbarToggler onClick={this.toggleNav} />
-                        <NavbarBrand href="/"><h2 className="nav-head">Qkres</h2></NavbarBrand>
+                        <NavbarBrand href="/"><h2 className="nav-head">Oneshot</h2></NavbarBrand>
                         <Collapse isOpen={this.state.isNavOpen} navbar>
                             <Nav navbar className="ml-auto">
                             <NavItem>
                                 <a className="nav-link" href='/'> Home</a>
                             </NavItem>
                             <NavItem>
-                                <a className="nav-link" href='/state'>Dashboard</a>
+                                <a className="nav-link" href='/'>Dashboard</a>
                             </NavItem>
                             <NavItem>
                                 <NavLink className="nav-link"  to='#'> Search</NavLink>
                             </NavItem>
                             <NavItem>
-
-                                <Link
-                                    activeClass="active"
-                                    to="footer"
-                                    spy={true}
-                                    smooth={true}
-                                    offset={-70}
-                                    duration={500}
-                                ><a className="nav-link" href="#">Contact Me</a></Link>
+                                <a className="nav-link" href="#footer">Contact Me</a>
 
                             </NavItem>
                             

@@ -1,10 +1,12 @@
 html,body {
   height: 100%;
   margin: 0;
-  padding-top: 4rem;
   font-family: sans-serif;
-  /* background :url('./img/IrM.gif');
-  background-repeat: no-repeat;
+  background-color : #101820FF;
+  overflow-x: hidden;
+  background-attachment: fixed;
+  scroll-behavior: smooth;
+  /*background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover; */
 }
@@ -12,13 +14,15 @@ html,body {
   height:100%
 }
 nav{
-  background: rgb(1, 20, 37);
+  background: rgb(1, 20, 37,0.8);
 }
 .nav-item{
   font-size: 20px;
   margin: 2px;
 }
-
+.container-fluid{
+  padding: 0;
+}
 
 .do{
   height: 27rem;
@@ -26,4 +30,54 @@ nav{
 }
 footer{
   background-color: blue;
+}
+
+.loader{
+
+  height:100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.whisper__Wrapper-k8uff3-0{
+  margin: auto;
+}
+.land{
+
+  background-color: black;
+
+
+}
+.land-left{
+  height:100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.img{
+
+  height: 100%;
+  width: 100%;
+  margin: auto;
+
+
+}
+.land-right{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.lnd-txt{
+  color: rgb(141, 165, 189);
+  font-weight: 10vh;
+  font-size: 10vh;
+  text-align: center;
+
+}
+.db-img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10%;
 }

@@ -2,12 +2,17 @@ import Axios from 'axios';
 import React, { Component } from 'react';
 import {Doughnut} from 'react-chartjs-2';
 import colors from '../colors';
+import { WhisperSpinner } from "react-spinners-kit";
+import college from '../img/college.jpg';
+import Fade from 'react-reveal/Fade'
+import LandPage from '../Components/landpage.js'
 export default class home extends Component {
     constructor(props) {
         super(props);
         this.state = {
              value: '',
-             colleges :[]
+             colleges :[],
+             loading:true
          };
 
         this.handleChange = this.handleChange.bind(this);
@@ -19,7 +24,8 @@ componentDidMount(){
     Axios.get("https://college-oneshot.herokuapp.com/")
         .then(res=>{
             this.setState({
-                colleges:res.data
+                colleges:res.data,
+                loading:false
             })
         })   
 }
@@ -76,9 +82,24 @@ filtercourse(data){
 }
 
 render() {
+    if(this.state.loading){
+        return(
+            <div className="loader">
+                <div>
+                <WhisperSpinner
+                size={70}
+                color="#006B38FF"
+            />
+            <br/>
+            <h2 style={{color:"white"}}>Just a moment, the data is getting loaded</h2>
+                </div>
+                
+                </div>
+        
+        )
+    }
     var statedatas = this.filterstate(this.state.colleges);
     var coursedatas = this.filtercourse(this.state.colleges);
-    console.log(statedatas)
     const statedata = {
         labels: statedatas[0],
         datasets: [{
@@ -99,8 +120,10 @@ render() {
       };
         return (
 
-            <div className="container">
-                <div className="row">
+            <div className="container-fluid">
+                <LandPage/>
+                <div id="dashboard" className="row" style={{marginTop:"7rem"}}>
+                    <Fade up>
                     <div className="do col-md-6 m-auto">
                         <Doughnut  options={{
                                 maintainAspectRatio:false,
@@ -128,7 +151,9 @@ render() {
                             }
                             }} data={statedata}/>
                     </div>
-                
+                    </Fade>
+                    
+                    <Fade down>
                     <div className="do col-md-6 m-auto">
                     <Doughnut  options={{
                                 maintainAspectRatio:false,
@@ -156,6 +181,7 @@ render() {
                             }
                             }} data={coursedata}/>
                     </div>       
+                    </Fade>
                 </div>
 
                 <h4 style={{color: "GrayText",fontSize:"1.5rem",textAlign:"center",margin:"auto"}}> Total colleges in India : {statedatas[0].length} </h4>
