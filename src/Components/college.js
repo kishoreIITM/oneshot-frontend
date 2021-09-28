@@ -3,13 +3,14 @@ import axios from 'axios';
 import ReactDOM from 'react-dom';
 import {Link } from 'react-router-dom';
 import Nav from './nav';
-
+import Fade from 'react-reveal/Fade';
+import { WhisperSpinner } from "react-spinners-kit";
 export default class college extends Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      id: this.props.match.params.id,
+      id: '',
       college: {
               },
       students:[],
@@ -39,56 +40,150 @@ export default class college extends Component {
       simcollege:response.data.simcollege
     });
     });
+    console.log(this.state)
   };
 
 
   render() {
-    if(this.state.id != this.props.match.params.id)
+    if(this.state.id != this.props.match.params.id )
     {
-      return(<div className='container'>
-          Details Loading
-      </div>)
-    }
-    var students = this.state.students.map((student)=>{
-      return(<div key={student.id}>
-        <p>{student.name}</p>
-        <p>{student.id}</p>
-        <Link to={"/student/"+student.id}>View More</Link>
+      return(<div className="loader">
+      <div>
+          <WhisperSpinner
+              size={70}
+              color="#006B38FF"
+          />
+          <br />
+          <h2 style={{ color: "white",textAlign:"center" }}>Just a moment, the data is getting loaded</h2>
+
       </div>
+
+  </div>)
+    }
+    var i = 0
+    var students = this.state.students.slice(0,6).map((student)=>{
+      i = i+1
+      return(
+        <div className="row col-stud-list">
+                      <div className="col-4">
+                          {student.name}
+                      </div>
+                      <div className="col-3">
+                          {student.id}
+                      </div>
+                      <div className="col-5">
+                        <Link to={"/student/"+student.id}>Click Here</Link>
+                      </div>
+                  </div>
       )
     })
 
     var simcollege = this.state.simcollege.map((college)=>{
+      if (college.id==this.props.match.params.id){
+        return
+      }
       return(
-        <div>
-          <p>{college.name}.....<Link to={"/college/"+college.id}>Know more</Link></p>
-        </div>
+         <Fade up>
+         <div className="row list-items sim-coll-list">
+         <div className="col-3">
+         {college.name}
+         </div>
+         <div className="col-2">
+             {college.city ? college.city :" - "}
+         </div>
+         <div className="col-2">
+             {college.state ?college.state : " - " }
+         </div>
+         <div className="col-2">
+             {college.founded ? college.founded : " - "}
+         </div>
+         <div className="col-3">
+         <Link to={'/college/'+college.id}>Click here</Link>
+         </div>
+         </div>
+     </Fade>
       )
     })
-    return (<div className="container">
-      <div className="row">
-      <div className="col-md-6">
-          <div>
-              <h4 key={this.state.college.id}>Name: {this.state.college.name}</h4>
-              <h4>ID: {this.state.college.id}</h4>
-              <h4>Year Founded: {this.state.college.founded}</h4>
-              <h4>City: {this.state.college.city}</h4>
-              <h4>State: {this.state.college.state}</h4>
-              <h4>Country: {this.state.college.county}</h4>
-              <h4>No.Of Students: {this.state.college.students}</h4>
+
+    var courses = ""
+
+    this.state.college.courses.map((course) => {
+
+        courses = courses + course + ",  "
+    })
+    courses = courses.slice(0, courses.length - 3)
+
+    return (
+    <div className="container-fluid college" style={{marginTop:"7rem"}}>
+      <div className="container">
+      <h1 style={{textAlign:"center",color:"rgb(141, 165, 189)",marginBottom:"2rem"}}>Details on {this.state.college.name}</h1>
+    
+
+        <div className="row">
+          <Fade left>
+
+          <div className="col-md-6">
+              <h4><strong style={{color: "rgba(240, 248, 255, 0.808)"}}>Name: </strong>{this.state.college.name}</h4>
+              <h4><strong style={{color: "rgba(240, 248, 255, 0.808)"}}>ID:</strong> {this.state.college.id}</h4>
+              <h4><strong style={{color: "rgba(240, 248, 255, 0.808)"}}>Year Founded:</strong> {this.state.college.founded}</h4>
+              <h4><strong style={{color: "rgba(240, 248, 255, 0.808)"}}>City: </strong>{this.state.college.city}</h4>
+              <h4><strong style={{color: "rgba(240, 248, 255, 0.808)"}}>State: </strong>{this.state.college.state}</h4>
+              <h4><strong style={{color: "rgba(240, 248, 255, 0.808)"}}>Country:</strong> {this.state.college.county}</h4>
+              <h4><strong style={{color: "rgba(240, 248, 255, 0.808)"}}>No.Of Students:</strong> {this.state.college.students}</h4>
+              <h4><strong style={{color: "rgba(240, 248, 255, 0.808)"}}>Courses offered:</strong> {courses}</h4>
+          </div>
+          </Fade>
+          <Fade right>
+          <div className=" col-md-6 d-flex justify-content-center">
+          <div style={{paddingTop:"1rem"}}>
+              <h2 style={{textAlign:"center"}}>
+                Top scorers in this institute
+              </h2>
+              <div className="row col-stud">
+                        <div className="col-4">
+                            NAME
+                        </div>
+                        <div className="col-3">
+                            ID
+                        </div>
+                        <div className="col-5">
+                            KNOW MORE
+                        </div>
+                    </div>
+              {students}
+              <a style={{textAlign:"center",display:"block",marginTop:"0.5rem"}} href={'/studlist/'+this.state.id}>  View all students</a>     
             </div>
-          <h1>
-            Students studying there
-          </h1>
-          {students} 
+           
+ 
+          </div>
+          </Fade>
         </div>
-        <div className="col-md-6">
-        <h1>Similar College</h1>
+
+      <h3 style={{textAlign:"center",color:"rgb(141, 165, 189)",marginTop:"2rem",marginBottom:"2rem"}}>Similar College</h3>
+      <div className="row list-heading sim-coll-list">
+                    <div className="col-3">
+                        NAME
+                    </div>
+                    <div className="col-2">
+                        CITY
+                    </div>
+                    <div className="col-2">
+                        STATE
+                    </div>
+                    <div className="col-2">
+                        FOUNDED
+                    </div>
+                    <div className="col-3">
+                        KNOW MORE
+                    </div>
+                </div>
           {simcollege}
-        </div>
+
       </div>
         
-    </div>)
+      </div>
+      
+      )
   }
 
 }

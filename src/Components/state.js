@@ -136,7 +136,7 @@ export default class home extends Component {
                                 color="#006B38FF"
                             />
                             <br />
-                            <h2 style={{ color: "white" }}>Just a moment, the data is getting loaded</h2>
+                            <h2 style={{ color: "white",textAlign:"center" }}>Just a moment, the data is getting loaded</h2>
 
                         </div>
 

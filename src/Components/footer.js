@@ -10,9 +10,8 @@ function footer() {
                   <div className="row mt-2" >
                       <div className="col-6 col-sm-4 align-self-center">
                           <ul className="list-unstyled text-center">
-                              <li><a href="/">Home</a></li>
                               <li><a href="/">Dashboard</a></li>
-                              <li><a href="#">Contact</a></li>
+                              <li><a href="/">Search</a></li>
                           </ul>
                       </div>
                       

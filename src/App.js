@@ -7,6 +7,8 @@ import student from './Components/student';
 import country from './Components/country';
 import state from './Components/state';
 import colllist from './Components/coll-list';
+import collcourse from './Components/coll-course';
+import studentlist from './Components/stud-list.js';
 import Nav from './Components/nav';
 import Footer from './Components/footer';
 import 'font-awesome/css/font-awesome.min.css'
@@ -19,8 +21,9 @@ class App extends Component {
           <Switch>
                 <Route exact path= "/" component={state} />
                 <Route path = "/college/:id" component={college} />
+                <Route path="/course/:course" component={collcourse} />
                 <Route path="/student/:id" component={student} />
-
+                <Route path="/studlist/:id" component={studentlist} />
                 <Route path="/state/:state" component={colllist} />
           </Switch>
           <Footer></Footer>
