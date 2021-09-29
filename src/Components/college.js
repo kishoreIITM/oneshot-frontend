@@ -60,9 +60,9 @@ export default class college extends Component {
 
   </div>)
     }
-    var i = 0
+
     var students = this.state.students.slice(0,6).map((student)=>{
-      i = i+1
+
       return(
         <div className="row col-stud-list">
                       <div className="col-4">
@@ -72,7 +72,7 @@ export default class college extends Component {
                           {student.id}
                       </div>
                       <div className="col-5">
-                        <Link to={"/student/"+student.id}>Click Here</Link>
+                        <Link to={"/student/"+this.state.college.id+"/" +student.id}>Click Here</Link>
                       </div>
                   </div>
       )
@@ -129,7 +129,7 @@ export default class college extends Component {
               <h4><strong style={{color: "rgba(240, 248, 255, 0.808)"}}>City: </strong>{this.state.college.city}</h4>
               <h4><strong style={{color: "rgba(240, 248, 255, 0.808)"}}>State: </strong>{this.state.college.state}</h4>
               <h4><strong style={{color: "rgba(240, 248, 255, 0.808)"}}>Country:</strong> {this.state.college.county}</h4>
-              <h4><strong style={{color: "rgba(240, 248, 255, 0.808)"}}>No.Of Students:</strong> {this.state.college.students}</h4>
+              <h4><strong style={{color: "rgba(240, 248, 255, 0.808)"}}>No. Of Students:</strong> {this.state.college.students}</h4>
               <h4><strong style={{color: "rgba(240, 248, 255, 0.808)"}}>Courses offered:</strong> {courses}</h4>
           </div>
           </Fade>

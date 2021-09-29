@@ -19,8 +19,7 @@ export default class home extends Component {
             imgloading: true
         };
 
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        
         this.filter = this.filterstate.bind(this);
         this.filter = this.filtercourse.bind(this);
         this.imgonload = this.imgonload.bind(this);
@@ -52,15 +51,7 @@ export default class home extends Component {
 
     }
 
-    handleChange(event) {
-        this.setState({ value: event.target.value });
-    }
-
-    handleSubmit(event) {
-        event.preventDefault();
-        //axios.post("http://localhost:4000/college")
-        window.location.href = "/college/" + this.state.value
-    }
+    
 
     filterstate(data) {
         var ans = {}
@@ -242,13 +233,7 @@ export default class home extends Component {
                         </div>
 
                         <h4 style={{ marginBottom:"2rem",color: "rgb(141, 165, 189)", fontSize: "1.5rem", textAlign: "center", }}> Total colleges in India : {statedatas[0].length} </h4>
-                        {/*<form onSubmit={this.handleSubmit}>
-                            <label>
-                                Name:
-                                <input type="text" value={this.state.value} onChange={this.handleChange} />
-                            </label>
-                            <input type="submit" value="Submit" />
-                        </form> */}
+                        
                     </div>
 
                 </div>

@@ -11,7 +11,8 @@ import collcourse from './Components/coll-course';
 import studentlist from './Components/stud-list.js';
 import Nav from './Components/nav';
 import Footer from './Components/footer';
-import 'font-awesome/css/font-awesome.min.css'
+import 'font-awesome/css/font-awesome.min.css';
+import search from './Components/search';
 class App extends Component {
   render() {
     return (
@@ -22,9 +23,10 @@ class App extends Component {
                 <Route exact path= "/" component={state} />
                 <Route path = "/college/:id" component={college} />
                 <Route path="/course/:course" component={collcourse} />
-                <Route path="/student/:id" component={student} />
+                <Route path="/student/:collegeId/:id" component={student} />
                 <Route path="/studlist/:id" component={studentlist} />
                 <Route path="/state/:state" component={colllist} />
+                <Route path="/search" component={search} />
           </Switch>
           <Footer></Footer>
       </div>

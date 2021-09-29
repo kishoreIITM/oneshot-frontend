@@ -151,6 +151,14 @@ a{
   min-height: 60vh;
   position: relative;
   margin-bottom: 2rem;
+  
+}
+.college h4{
+  display: flex;
+}
+.college h4 strong{
+  font-family: 'Turret Road', cursive;
+  min-width: 50%;
 }
 
 .college::before{
@@ -165,6 +173,44 @@ a{
   background-image: url('../src/img/bg1.jpg');
   background-repeat: no-repeat;
   background-position: 50% 0;
+  background-size: cover;
+}
+
+.stud-details{
+
+  margin-top: 3rem;
+  color: rgb(151, 153, 155);
+  min-height: 70vh;
+  padding: 6vw;
+
+  
+}
+.stud-details h4{
+  display: flex;
+  
+
+}
+.stud-details h4 strong{
+  font-family: 'Turret Road', cursive;
+  min-width: 40%;
+}
+.search{
+  color: rgb(151, 153, 155);
+  padding-top: 6rem ;
+  min-height: 80vh;
+}
+.search h2{
+  margin-bottom: 2rem;
+}
+.search input{
+  max-width: 300px;
+
+}
+#search-bg{
+
+  background: url('./img/IrM.gif');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   background-size: cover;
 }
 
@@ -199,4 +245,11 @@ a{
   .list-items{
     height: 1.5rem;
   }
+  .search h2{
+    margin-bottom: 0.5rem;
+  }
+  .search .col-md-6{
+    margin-bottom: 2rem;
+  }
+  
 }

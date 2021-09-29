@@ -32,7 +32,7 @@ export default class navbar extends Component {
                                 <a className="nav-link" href='/'>Dashboard</a>
                             </NavItem>
                             <NavItem>
-                                <NavLink className="nav-link"  to='#'> Search</NavLink>
+                                <NavLink className="nav-link"  to='/search'> Search</NavLink>
                             </NavItem>
                             <NavItem>
                                 <a className="nav-link" href="#footer">Contact Me</a>
