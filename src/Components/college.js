@@ -78,7 +78,7 @@ export default class college extends Component {
       )
     })
 
-    var simcollege = this.state.simcollege.map((college)=>{
+    var simcollege = this.state.simcollege.slice(0,6).map((college)=>{
       if (college.id==this.props.match.params.id){
         return
       }
