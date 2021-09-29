@@ -9,7 +9,7 @@ export default class home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      student: {}
+      student: ''
     };
 
   }
@@ -26,11 +26,13 @@ export default class home extends Component {
           student: response.data.students
         });
       });
+      console.log(this.state)
 
   };
 
   render() {
-    if (!this.state.student.id) {
+    console.log(this.state)
+    if (this.state.student=='') {
       return (<div className="loader">
         <div>
           <WhisperSpinner
@@ -42,6 +44,13 @@ export default class home extends Component {
         </div>
       </div>)
     }
+    if (this.state.student==null){
+      return(
+      <div style={{color:"white",marginTop:"10rem",textAlign:"center",minHeight:"60vh"}} className="container">
+          <h2>Sorry! No students found with that data</h2>
+      </div>)
+    }
+
     var skills = ""
 
     this.state.student.skills.slice(0, 5).map((skill) => {

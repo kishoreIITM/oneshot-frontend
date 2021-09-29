@@ -37,13 +37,12 @@ export default class home extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        //axios.post("http://localhost:4000/college")
-        window.location.href = "/college/" + this.state.collegeid
+        window.location.href = "/college/ " + this.state.collegeid
     }
     handleSubmitstud(event) {
         event.preventDefault();
-        //axios.post("http://localhost:4000/college")
-        window.location.href = "/student/" + this.state.collid1 + "/" + this.state.studid
+        
+        window.location.href = "/student/ " + this.state.collid1 + "/" + this.state.studid
     }
 
     render() {
@@ -58,12 +57,12 @@ export default class home extends Component {
                             <div className="col-md-6">
                                 <h2 > Search College</h2>
                                 <form onSubmit={this.handleSubmit}>
-                                    <div class="form-group">
+                                    <div className="form-group">
                                         <label>College ID</label>
-                                        <input type="text" value={this.state.collegeid} onChange={this.handleChange} class="form-control" placeholder="College ID" />
-                                        <small id="emailHelp" class="form-text text-muted">You need to enter college ID not college name.</small>
+                                        <input type="text" value={this.state.collegeid} onChange={this.handleChange} className="form-control" placeholder="College ID" />
+                                        <small id="emailHelp" className="form-text text-muted">You need to enter college ID not college name.</small>
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="submit" className="btn btn-primary">Submit</button>
                                 </form>
                             </div>
                         </Fade>
@@ -71,17 +70,17 @@ export default class home extends Component {
                             <div className="col-md-6">
                                 <h2 > Search Student</h2>
                                 <form onSubmit={this.handleSubmitstud}>
-                                    <div class="form-group">
+                                    <div className="form-group">
                                         <label>College ID</label>
-                                        <input type="text" value={this.state.collid1} onChange={this.handleChange1} class="form-control" placeholder="College ID" />
-                                        <small id="emailHelp" class="form-text text-muted">You need to enter college ID not college name.</small>
+                                        <input type="text" value={this.state.collid1} onChange={this.handleChange1} className="form-control" placeholder="College ID" />
+                                        <small id="emailHelp" className="form-text text-muted">You need to enter college ID not college name.</small>
                                     </div>
-                                    <div class="form-group">
+                                    <div className="form-group">
                                         <label>Student ID</label>
-                                        <input type="text" value={this.state.studid} onChange={this.handleChangestud} class="form-control" placeholder="Student ID" />
+                                        <input type="text" value={this.state.studid} onChange={this.handleChangestud} className="form-control" placeholder="Student ID" />
                                     </div>
 
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="submit" className="btn btn-primary">Submit</button>
                                 </form>
                             </div>
                         </Fade>

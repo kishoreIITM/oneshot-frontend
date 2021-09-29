@@ -30,18 +30,31 @@ export default class college extends Component {
   getCollegeData() {
     axios.get('https://college-oneshot.herokuapp.com/college/' + this.props.match.params.id)
       .then(response => {
-        this.setState({
-          id: response.data.college.id,
-          college: response.data.college,
-          students: response.data.students,
-          simcollege: response.data.simcollege
-        });
+        if (response.data.college==null){
+            this.setState({
+              college: null
+            })
+        }
+        else{
+          this.setState({
+            id: response.data.college.id,
+            college: response.data.college,
+            students: response.data.students,
+            simcollege: response.data.simcollege
+          });
+      }
       });
     console.log(this.state)
   };
 
 
   render() {
+    if (this.state.college==null){
+      return(
+      <div style={{color:"white",marginTop:"10rem",textAlign:"center",minHeight:"60vh"}} className="container">
+          <h2> Sorry! No college found with that data</h2>
+      </div>)
+    }
     if (this.state.id != this.props.match.params.id) {
       return (<div className="loader">
         <div>
