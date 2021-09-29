@@ -160,7 +160,7 @@ export default class college extends Component {
                     </div>
                   </div>
                   {students}
-                  <a style={{ textAlign: "center", display: "block", marginTop: "0.5rem" }} href={'/studlist/' + this.state.id}>  View all students</a>
+                  <a style={{ textAlign: "center", display: "block", marginTop: "0.5rem" }} href={'/studlist/' + this.state.id}>  View all top scorers</a>
                 </div>
 
 

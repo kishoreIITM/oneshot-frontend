@@ -231,7 +231,7 @@ export default class home extends Component {
                             </div>
                         </div>
 
-                        <h4 style={{ marginBottom: "2rem", color: "rgb(141, 165, 189)", fontSize: "1.5rem", textAlign: "center", }}> Total colleges in India : {statedatas[0].length} </h4>
+                        <h4 style={{ marginBottom: "2rem", color: "rgb(141, 165, 189)", fontSize: "1.5rem", textAlign: "center", }}> Total colleges in India : {this.state.colleges.length} </h4>
 
                     </div>
 
