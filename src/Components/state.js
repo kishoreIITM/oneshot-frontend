@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import colors from '../colors';
 import { WhisperSpinner } from "react-spinners-kit";
-import college from '../img/college.jpg';
 import Fade from 'react-reveal/Fade';
 
 import landing from '../img/bg.jpg';
@@ -19,14 +18,14 @@ export default class home extends Component {
             imgloading: true
         };
 
-        
+
         this.filter = this.filterstate.bind(this);
         this.filter = this.filtercourse.bind(this);
         this.imgonload = this.imgonload.bind(this);
     }
 
     imgonload() {
-        setTimeout(()=>{
+        setTimeout(() => {
             if (this.state.imgloading == true) {
                 console.log("loaded")
                 this.setState({
@@ -34,8 +33,8 @@ export default class home extends Component {
                 })
                 console.log(this.state)
             }
-        },500)
-        
+        }, 500)
+
 
     }
 
@@ -51,7 +50,7 @@ export default class home extends Component {
 
     }
 
-    
+
 
     filterstate(data) {
         var ans = {}
@@ -120,14 +119,14 @@ export default class home extends Component {
         if (true) {
             return (
                 <div>
-                    <div className="loader" style={ (this.state.imgloading || this.state.loading )?{} :{display:"none"}}>
+                    <div className="loader" style={(this.state.imgloading || this.state.loading) ? {} : { display: "none" }}>
                         <div>
                             <WhisperSpinner
                                 size={70}
                                 color="#006B38FF"
                             />
                             <br />
-                            <h2 style={{ color: "white",textAlign:"center" }}>Just a moment, the data is getting loaded</h2>
+                            <h2 style={{ color: "white", textAlign: "center" }}>Just a moment, the data is getting loaded</h2>
 
                         </div>
 
@@ -135,7 +134,7 @@ export default class home extends Component {
 
 
 
-                    <div className="container-fluid" style={ (!this.state.imgloading && !this.state.loading )?{} :{display:"none"}}>
+                    <div className="container-fluid" style={(!this.state.imgloading && !this.state.loading) ? {} : { display: "none" }}>
                         <div className="land">
                             <div className="row">
 
@@ -160,80 +159,80 @@ export default class home extends Component {
                             </div>
 
                         </div>
-                        <div id="dashboard container" style={{ marginTop: "2rem" ,marginBottom:"1rem"}}>
+                        <div id="dashboard container" style={{ marginTop: "2rem", marginBottom: "1rem" }}>
                             <Fade down>
-                            <div style={{textAlign:"center",color:"rgb(141, 165, 189)"}}>
-                                <h1> Stats on colleges of India</h1>
-                                Please click on the respective block of pie chart to drill down for more details
-                            </div>
-                            </Fade>
-
-                            <div className="row" style={{marginTop:"2rem"}}>
-
-                            <Fade up>
-                                <div className="do col-md-6 m-auto">
-                                    <Doughnut options={{
-                                        maintainAspectRatio: false,
-                                        responsive: true,
-                                        onClick: function (event, item) {
-                                            if (item[0] != undefined) {
-                                                window.location.href = "/state/" + statedatas[0][item[0]._index]
-                                            }
-                                        },
-                                        animation: {
-                                            animateRotate: true,
-                                            animateScale: true,
-                                            tension: {
-                                                duration: 1000
-                                            }
-                                        },
-                                        title: {
-                                            display: true,
-                                            text: 'State vise comparison',
-                                            position: 'bottom',
-                                            fontSize: 20
-                                        },
-                                        legend: {
-                                            display: true,
-                                        }
-                                    }} data={statedata} />
+                                <div style={{ textAlign: "center", color: "rgb(141, 165, 189)" }}>
+                                    <h1> Stats on colleges of India</h1>
+                                    Please click on the respective block of pie chart to drill down for more details
                                 </div>
                             </Fade>
 
-                            <Fade up>
-                                <div className="do col-md-6 m-auto">
-                                    <Doughnut options={{
-                                        maintainAspectRatio: false,
-                                        responsive: true,
-                                        onClick: function (event, item) {
-                                            if (item[0] != undefined) {
-                                                window.location.href = "/course/" + coursedatas[0][item[0]._index]
+                            <div className="row" style={{ marginTop: "2rem" }}>
+
+                                <Fade up>
+                                    <div className="do col-md-6 m-auto">
+                                        <Doughnut options={{
+                                            maintainAspectRatio: false,
+                                            responsive: true,
+                                            onClick: function (event, item) {
+                                                if (item[0] != undefined) {
+                                                    window.location.href = "/state/" + statedatas[0][item[0]._index]
+                                                }
+                                            },
+                                            animation: {
+                                                animateRotate: true,
+                                                animateScale: true,
+                                                tension: {
+                                                    duration: 1000
+                                                }
+                                            },
+                                            title: {
+                                                display: true,
+                                                text: 'State vise comparison',
+                                                position: 'bottom',
+                                                fontSize: 20
+                                            },
+                                            legend: {
+                                                display: true,
                                             }
-                                        },
-                                        animation: {
-                                            animateRotate: true,
-                                            animateScale: true,
-                                            tension: {
-                                                duration: 1000
+                                        }} data={statedata} />
+                                    </div>
+                                </Fade>
+
+                                <Fade up>
+                                    <div className="do col-md-6 m-auto">
+                                        <Doughnut options={{
+                                            maintainAspectRatio: false,
+                                            responsive: true,
+                                            onClick: function (event, item) {
+                                                if (item[0] != undefined) {
+                                                    window.location.href = "/course/" + coursedatas[0][item[0]._index]
+                                                }
+                                            },
+                                            animation: {
+                                                animateRotate: true,
+                                                animateScale: true,
+                                                tension: {
+                                                    duration: 1000
+                                                }
+                                            },
+                                            title: {
+                                                display: true,
+                                                text: 'Course vise comparison',
+                                                position: 'bottom',
+                                                fontSize: 20
+                                            },
+                                            legend: {
+                                                display: true,
                                             }
-                                        },
-                                        title: {
-                                            display: true,
-                                            text: 'Course vise comparison',
-                                            position: 'bottom',
-                                            fontSize: 20
-                                        },
-                                        legend: {
-                                            display: true,
-                                        }
-                                    }} data={coursedata} />
-                                </div>
-                            </Fade>
+                                        }} data={coursedata} />
+                                    </div>
+                                </Fade>
                             </div>
                         </div>
 
-                        <h4 style={{ marginBottom:"2rem",color: "rgb(141, 165, 189)", fontSize: "1.5rem", textAlign: "center", }}> Total colleges in India : {statedatas[0].length} </h4>
-                        
+                        <h4 style={{ marginBottom: "2rem", color: "rgb(141, 165, 189)", fontSize: "1.5rem", textAlign: "center", }}> Total colleges in India : {statedatas[0].length} </h4>
+
                     </div>
 
                 </div>

@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import main from './Components/main';
 import college from './Components/college';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import student from './Components/student';
-import country from './Components/country';
 import state from './Components/state';
 import colllist from './Components/coll-list';
 import collcourse from './Components/coll-course';

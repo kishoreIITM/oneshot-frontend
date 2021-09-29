@@ -106,12 +106,17 @@ footer img{
   height: 3rem;
 }
 .list-items{
+  
   border: 0px solid rgb(55, 80, 112,0.3);
   color: rgb(194, 191, 191);
   border-radius: 10rem;
   background-color: rgb(55, 80, 112,0.3);
   height: 2rem;
   margin-top: 1vh;
+  opacity:0;
+}
+.list-items:hover{
+  background-color: rgb(55, 80, 112,0.5);
 }
 
 .coll-list .col-2, .col-3 ,.col-2 , .col-stud  .col-4, .col-5 , .col-stud-list .col-4{
@@ -141,6 +146,9 @@ a{
   height: 2rem;
   margin-top: 1vh;
   
+}
+.col-stud-list:hover{
+  background-color: rgba(38, 44, 77, 0.6);
 }
 .stud{
   max-height: 30vh;
@@ -196,7 +204,7 @@ a{
 }
 .search{
   color: rgb(151, 153, 155);
-  padding-top: 6rem ;
+  padding: 10% ;
   min-height: 80vh;
 }
 .search h2{
